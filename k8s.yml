@@ -1,4 +1,4 @@
-apiVersion: extensions/cloudheads1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: pod-cloudheads1
