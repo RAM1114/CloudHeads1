@@ -23,18 +23,7 @@ spec:
         ports:
         - name: cloudheads1
           containerPort: 8080
-          protocol: TCP
-        volumeMounts:
-          - name: podinfo
-            mountPath: /tmp
-            readOnly: false
-      volumes:
-        - name: podinfo
-          downwardAPI:
-            items:
-            - path: "labels"
-              fieldRef:
-                fieldPath: metadata.labels 
+          protocol: TCP 
       imagePullSecrets:
         - name: cloud1secret
 ---
