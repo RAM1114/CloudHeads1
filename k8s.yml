@@ -1,27 +1,27 @@
-apiVersion: extensions/v1beta1
+apiVersion: extensions/cloudheads1
 kind: Deployment
 metadata:
-  name: twitter-feed-v1
+  name: pod-cloudheads1
   labels:
     commit: ${GIT_COMMIT}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: twitter-feed
+      app: pod-cloudheads1
   template:
     metadata:
       labels:
-        app: twitter-feed
+        app: cloudheads1
         commit: ${GIT_COMMIT}
         color: blue
     spec:
       containers:
-      - name: twitter-feed
-        image: iad.ocir.io/cloud_pursuit_west/twitterfeed:${GIT_COMMIT}
+      - name: cloudheads1
+        image: iad.ocir.io/codeatcustomer1/cloudheads/cloudheads1:${GIT_COMMIT}
         imagePullPolicy: Always
         ports:
-        - name: twitter-feed
+        - name: cloudheads1
           containerPort: 8080
           protocol: TCP
         volumeMounts:
@@ -36,21 +36,21 @@ spec:
               fieldRef:
                 fieldPath: metadata.labels 
       imagePullSecrets:
-        - name: wercker
+        - name: cloud1secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: twitter-feed
+  name: cloudheads1
   labels:
-    app: twitter-feed
+    app: cloudheads1
     commit: ${GIT_COMMIT}
 spec:
   ports:
   - port: 30000
     targetPort: 8080
   selector:
-    app: twitter-feed
+    app: cloudheads1
     color: blue
   type: ClusterIP
 ---
