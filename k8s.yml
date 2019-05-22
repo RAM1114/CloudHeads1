@@ -31,6 +31,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cloudheads1
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: 8080
   labels:
     app: cloudheads1
     commit: ${GIT_COMMIT}
