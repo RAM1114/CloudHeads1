@@ -24,8 +24,8 @@ public class EmployeeController {
     // Select, Insert, Delete, Update Operations for an Employee
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    Optional<Employee> getEmployee(@RequestParam Integer id){
-    	Optional<Employee> emp = employeeService.findById(id);
+    Employee getEmployee(@RequestParam Integer id){
+    	Employee emp = employeeService.findOne(id);
          return emp;
     }
 
@@ -43,7 +43,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employee", method = RequestMethod.DELETE)
     Map deleteEmployee(@RequestParam Integer id){
-        employeeService.deleteById(id);
+        employeeService.delete(id);
 
         Map<String, String> status = new HashMap<>();
         status.put("Status", "Success");
