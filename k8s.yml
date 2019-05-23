@@ -34,6 +34,7 @@ metadata:
   annotations:
     prometheus.io/scrape: 'true'
     prometheus.io/port: 8080
+    prometheus.io/path: '/prometheus'
   labels:
     app: cloudheads1
     commit: ${GIT_COMMIT}
